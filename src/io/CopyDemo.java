@@ -34,7 +34,6 @@ public class CopyDemo {
             fos.write(d);
         }
 
-
         System.out.println("复制完毕!");
         fos.close();
         fis.close();
