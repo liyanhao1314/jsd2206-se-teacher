@@ -53,6 +53,9 @@ public class CopyDemo2 {
             java.io.OutputStream超类上定义了块写操作
             void write(byte[] data)
             一次性将给定的字节数组中所有的字节写出
+
+            void write(byte[] data,int offset,int len)
+            一次性将给定的字节数组从下标offset处开始的连续len个字节写出
          */
         //编译后:byte[] data = new byte[10240];
         byte[] data = new byte[1024*10];//10kb
@@ -60,7 +63,7 @@ public class CopyDemo2 {
 
         long start = System.currentTimeMillis();
         while( (len = fis.read(data)) != -1  ){
-            fos.write(data);
+            fos.write(data,0,len);
         }
         long end = System.currentTimeMillis();
         System.out.println("复制完毕,耗时"+(end-start)+"ms");
