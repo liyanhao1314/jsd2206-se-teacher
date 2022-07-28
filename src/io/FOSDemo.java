@@ -56,7 +56,7 @@ public class FOSDemo {
                                        写出的字节
 
             write方法调用完毕后，fos.dat中的样子:
-            00000001 00000011
+            11111111 00000011
          */
         fos.write(3);
 
