@@ -10,8 +10,10 @@ import java.io.IOException;
  */
 public class CopyDemo {
     public static void main(String[] args) throws IOException {
-        FileInputStream fis = new FileInputStream("image.jpg");
-        FileOutputStream fos = new FileOutputStream("image_cp.jpg");
+//        FileInputStream fis = new FileInputStream("image.jpg");
+//        FileOutputStream fos = new FileOutputStream("image_cp.jpg");
+        FileInputStream fis = new FileInputStream("01.rmvb");
+        FileOutputStream fos = new FileOutputStream("01_cp.rmvb");
         /*
             image.jpg文件内容
             11001100 00110011 11110000 00001111 10101010 01010101 ...
@@ -30,11 +32,13 @@ public class CopyDemo {
             11001100
          */
         int d;//记录每次读取的字节内容
+        long start = System.currentTimeMillis();//获取当前系统时间的毫秒值
         while(  (d = fis.read()) != -1    ) {//若读取到了-1则应当停止循环，没有读取到-1则应当抄
             fos.write(d);
         }
+        long end = System.currentTimeMillis();//获取当前系统时间的毫秒值
 
-        System.out.println("复制完毕!");
+        System.out.println("复制完毕，耗时:"+(end-start)+"ms");
         fos.close();
         fis.close();
     }
