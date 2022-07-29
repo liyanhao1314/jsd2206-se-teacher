@@ -9,7 +9,7 @@
 
 java将IO比喻为"流",即:stream. 就像生活中的"电流","水流"一样,它是以同一个方向顺序移动的过程.只不过这里流动的是字节(2进制数据).所以在IO中有输入流和输出流之分,我们理解他们是连接程序与另一端的"管道",用于获取或发送数据到另一端.
 
-![img.png](img.png)
+![image20210326112716154](https://gitee.com/xiloer/jsd2204-se-teacher/raw/master/%E7%AC%94%E8%AE%B0/image-20210326112716154.png)
 
 ##### Java定义了两个超类(抽象类):
 
@@ -418,52 +418,45 @@ String提供方法: byte[] getBytes(String charsetName) 将当前字符串转换
 ```java
 package io;
 
-import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.nio.charset.StandardCharsets;
 
 /**
- * 向文件中写入文本数据
+ * 使用文件输出流向文件中写入文本数据
  */
 public class WriteStringDemo {
     public static void main(String[] args) throws IOException {
-        //向文件fos.txt中写入字符串
         /*
             1:创建一个文件输出流
             2:将写出的文字先转换为2进制(一组字节)
             3:关闭流
 
             文件流有两种创建方式:
-            覆盖模式，对应的构造器:
+            1:覆盖模式，对应的构造器:
               FileOutputStream(String filename)
               FileOutputStream(File file)
               所谓覆盖模式:文件流在创建是若发现该文件已存在，则会将该文件原内容全部删除。然后
-              在陆续将通过该流写出的内容保存到文件中。
+              在陆续将通过该流写出的内容保存到文件中。        
          */
-        File file = new File("fos.txt");
-        FileOutputStream fos = new FileOutputStream(file);
-        String line = "爱你~";
+        FileOutputStream fos = new FileOutputStream("fos.txt",true);
+      String line = "让我再看你一遍，从南到北。";
         /*
-            String提供的方法:
-            byte[] getBytes(Charset charset)
-            将当前字符串按照指定的字符集转换为一组字节
+            String提供了将内容转换为一组字节的方法:getBytes()
+            java.nio.charset.StandardCharsets
          */
         byte[] data = line.getBytes(StandardCharsets.UTF_8);
         fos.write(data);
 
-        line = "如果你突然打了个喷嚏，啊~那一定是我在想你";
+        line = "像是北五环路蒙住的双眼。";
         data = line.getBytes(StandardCharsets.UTF_8);
-        fos.write(data);
-
+        fos.write(data);       
 
         System.out.println("写出完毕!");
         fos.close();
-
     }
 }
-
 
 ```
 
@@ -509,23 +502,18 @@ public class WriteStringDemo {
               的内容都会被陆续追加到文件末尾。
          */
         FileOutputStream fos = new FileOutputStream("fos.txt",true);
-        String line = "爱你~";
-        /*
-            String提供的方法:
-            byte[] getBytes(Charset charset)
-            将当前字符串按照指定的字符集转换为一组字节
-         */
+
+        String line = "斯国一!";
         byte[] data = line.getBytes(StandardCharsets.UTF_8);
         fos.write(data);
 
-        line = "如果你突然打了个喷嚏，啊~那一定是我在想你";
+        line = "奥里给!";
         data = line.getBytes(StandardCharsets.UTF_8);
         fos.write(data);
 
 
         System.out.println("写出完毕!");
         fos.close();
-
     }
 }
 
@@ -613,6 +601,17 @@ java将IO比喻为"流",即:stream. 就像生活中的"电流","水流"一样,�
 
   void write(byte[]data,int off,int len)：块写，将给定字节数组从下标off处开始的连续len个字节一次性写出。
 
+##### java将流分为两类:节点流与处理流:
+
+- **节点流**:也称为**低级流**.
+
+  节点流的另一端是明确的,是实际读写数据的流,读写一定是建立在节点流基础上进行的.
+
+- **处理流**:也称为**高级流**.
+
+  处理流不能独立存在,必须连接在其他流上,目的是当数据流经当前流时对数据进行加工处理来简化我们对数据的该操作.
+
+##### 实际应用中,我们可以通过串联一组高级流到某个低级流上以流水线式的加工处理对某设备的数据进行读写,这个过程也成为流的连接,这也是IO的精髓所在.
 
 ### 文件流
 

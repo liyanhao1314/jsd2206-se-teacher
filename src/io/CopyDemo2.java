@@ -54,8 +54,21 @@ public class CopyDemo2 {
             void write(byte[] data)
             一次性将给定的字节数组中所有的字节写出
 
+            byte[] data:{10101010 01010101 11110000 00001111}
+            fos.write(data)
+            文件数据:
+            10101010 01010101 11110000 00001111
+
+
             void write(byte[] data,int offset,int len)
             一次性将给定的字节数组从下标offset处开始的连续len个字节写出
+            byte[] data:{10101010 01010101 11110000 00001111}
+                                  ^^^^^^^^ ^^^^^^^^
+            fos.write(data,1,2):将data数组中从下标1开始的连续2个字节一次性写出
+
+            文件数据:
+            01010101 11110000
+
          */
         //编译后:byte[] data = new byte[10240];
         byte[] data = new byte[1024*10];//10kb

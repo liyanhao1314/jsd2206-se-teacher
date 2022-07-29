@@ -20,7 +20,7 @@ public class FISDemo {
          */
         /*
             fos.dat中的样子:
-            11111111 00000011
+            00000001 00000011
 
             第一次调用int d = fis.read()
             读取的是fos.dat文件第一个字节:
