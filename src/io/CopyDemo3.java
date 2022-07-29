@@ -23,13 +23,28 @@ import java.io.*;
 public class CopyDemo3 {
     public static void main(String[] args) throws IOException {
         FileInputStream fis = new FileInputStream("01.rmvb");
-        BufferedInputStream bis = new BufferedInputStream(fis);
+        /*
+            缓冲默认的构造器
+            BufferedInputStream(InputStream in)
+            内部开辟的字节数组长度为8kb
+
+            BufferedInputStream(InputStream in,int size)
+            自行指定内部缓冲区(byte数组)长度
+         */
+        BufferedInputStream bis = new BufferedInputStream(fis,1024*10);
 
         FileOutputStream fos = new FileOutputStream("01_cp.rmvb");
-        BufferedOutputStream bos = new BufferedOutputStream(fos);
+        BufferedOutputStream bos = new BufferedOutputStream(fos,1024*10);
 
         int d;
         long start = System.currentTimeMillis();
+        /*
+            缓冲字节输入流的read方法第一次调用是会一次性块读一组数据进入到内部的
+            缓冲区，然后返回其中第一个字节。第二次次调用时会直接将数组中第二个字节
+            返回，直到所有字节均返回后，下次调用read方法会再次块读数据进入数组。
+
+            因此缓冲流本质就是将我们的读写操作统一转换为块读写形式来保证的读写效率
+         */
         while((d = bis.read()) != -1){
             bos.write(d);
         }
