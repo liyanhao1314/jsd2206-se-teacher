@@ -31,6 +31,11 @@ public class OOSDemo {
             序列化时抛出异常:
             java.io.NotSerializableException
             说明序列化的类没有实现可序列化接口:java.io.Serializable
+
+            这里将对象写出涉及到两个操作:
+            对象经过文件流时，会被文件输出流转换为一组字节,这个过程称为对象序列化
+            序列化后的字节再经过文件流被写入文件中(硬盘中)，这个过程称为数据持久化
+            所谓持久化就是可以长久保存了
          */
         oos.writeObject(p);
         System.out.println("写出完毕！");
