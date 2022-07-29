@@ -1,5 +1,6 @@
 package io;
 
+import java.io.Serializable;
 import java.util.Arrays;
 
 /**
@@ -11,7 +12,7 @@ import java.util.Arrays;
  * 3:定义无参构造器
  * 4:实现序列化接口
  */
-public class Person {
+public class Person implements Serializable {
     private String name;
     private int age;
     private String gender;
