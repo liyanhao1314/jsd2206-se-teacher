@@ -11,12 +11,22 @@ import java.util.Arrays;
  * 2:为属性提供公开的GET SET方法
  * 3:定义无参构造器
  * 4:实现序列化接口
+ *
+ *
+ * 凡是需要进行序列化的类都必须实现Serializable接口，并且该类中所有引用类型的属性
+ * 也要实现该接口。
+ *
  */
 public class Person implements Serializable {
+    public static final long serialVersionUID = 1L;
     private String name;
     private int age;
     private String gender;
-    private String[] otherInfo;
+    /*
+        transient关键字，被该关键字修饰的属性序列化时值会被忽略。
+        忽略不必要的属性可以减少资源开销。
+     */
+    private transient String[] otherInfo;
 
     public Person(){}
     /*
