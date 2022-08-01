@@ -27,7 +27,12 @@ public class PWDemo2 {
         Scanner scanner  = new Scanner(System.in);
         while(true){
             String line = scanner.nextLine();//获取用户在控制台输入的一行字符串
+            /*
+                开发中如果出现字符串变量与字面量(直接量)进行equals比较时，要使用
+                字面量.equals(变量)的形式。因为字面量一定非空，可以避免空指针的产生
+             */
             if("exit".equals(line)){
+//            if(line.equals("exit")){
                 break;//如果用户输入的是退出，则停止循环
             }
             pw.println(line);
