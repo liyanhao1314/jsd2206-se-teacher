@@ -18,6 +18,12 @@ public class PWDemo2 {
         //4创建PrintWriter(高级流，字符流):按行写出字符串，自动行刷新
         PrintWriter pw = new PrintWriter(bw);
 
+        /*
+            实现简易记事本功能。
+            将控制台上输入的每一行字符串都按行写入到文件里
+            如果在控制台上单独输入exit,则程序退出。
+         */
+
         pw.println("嘿嘿");
         pw.println("哈哈");
         System.out.println("写出完毕");
