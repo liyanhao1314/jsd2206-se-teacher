@@ -4,6 +4,7 @@ import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.OutputStreamWriter;
+import java.nio.charset.StandardCharsets;
 
 /**
  * java IO将流按照读写数据的单位划分为字节与字符流
@@ -29,7 +30,7 @@ public class OSWDemo {
             转换流的其中一个作用就是将写出的字符转换为字节，然后再交给下面连接的字节流
             将数据写出
          */
-        OutputStreamWriter osw = new OutputStreamWriter(fos);
+        OutputStreamWriter osw = new OutputStreamWriter(fos, StandardCharsets.UTF_8);
         /*
             字符输出流java.io.Writer中提供了直接写出字符串的方法:
             void write(String str)
