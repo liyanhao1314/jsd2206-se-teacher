@@ -2,6 +2,7 @@ package io;
 
 import java.io.*;
 import java.nio.charset.StandardCharsets;
+import java.util.Scanner;
 
 /**
  * 自行完成流连接的创建
@@ -23,9 +24,15 @@ public class PWDemo2 {
             将控制台上输入的每一行字符串都按行写入到文件里
             如果在控制台上单独输入exit,则程序退出。
          */
+        Scanner scanner  = new Scanner(System.in);
+        while(true){
+            String line = scanner.nextLine();//获取用户在控制台输入的一行字符串
+            if("exit".equals(line)){
+                break;//如果用户输入的是退出，则停止循环
+            }
+            pw.println(line);
+        }
 
-        pw.println("嘿嘿");
-        pw.println("哈哈");
         System.out.println("写出完毕");
         pw.close();
     }
