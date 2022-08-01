@@ -20,6 +20,11 @@ import java.nio.charset.StandardCharsets;
  * java.io.InputStreamReader和OutputStreamWriter
  * 实际开发中当我们进行流连接对文本数据读写时，这几乎是一套必不可少的高级流。但是在
  * 流连接中我们不会直接操作这两个流。
+ *
+ * 转换流意义:
+ * 转换流本质上是一对字符流，但是他们是唯一连接在字节流上的字符流。在流连接中起到"转换器"
+ * 的作用。负责衔接字符与字节流。
+ * 而字符流由于读写都是字符，字节流读写都是字节，因此转换流在字符与字节中间负责转换。
  */
 public class OSWDemo {
     public static void main(String[] args) throws IOException {

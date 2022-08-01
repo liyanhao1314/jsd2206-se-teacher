@@ -28,7 +28,6 @@ public class ISRDemo {
             char c = (char)d;
             System.out.print(c);
         }
-
         isr.close();
     }
 }
