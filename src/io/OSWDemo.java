@@ -24,6 +24,11 @@ public class OSWDemo {
     public static void main(String[] args) throws IOException {
         //向文件osw.txt中写入文本数据
         FileOutputStream fos = new FileOutputStream("osw.txt");
+        /*
+            字符流都是高级流
+            转换流的其中一个作用就是将写出的字符转换为字节，然后再交给下面连接的字节流
+            将数据写出
+         */
         OutputStreamWriter osw = new OutputStreamWriter(fos);
         /*
             字符输出流java.io.Writer中提供了直接写出字符串的方法:
