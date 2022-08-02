@@ -13,9 +13,11 @@ public class AutoCloseableDemo {
             自动关闭特性是编译器认可的,而非虚拟机.编译器在编译的时候回将代码改为FinallyDemo2的样子
          */
         try(
+                //只有实现了AutoCloseable接口的类才可以在try()中定义.JAVA IO中所有的流均实现了该接口
                 FileOutputStream fos = new FileOutputStream("fos.dat");
         ){
-            fos.write(1);
+            int d = 1;
+            fos.write(d);
         }catch(IOException e){
             System.out.println("出错了");
         }
