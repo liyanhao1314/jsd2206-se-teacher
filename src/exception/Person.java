@@ -17,10 +17,12 @@ public class Person {
         return age;
     }
 
-    public void setAge(int age) {
+    public void setAge(int age) throws Exception {
         if(age<0||age>100){
             //主动实例化一个异常并使用throw关键字将其抛出到setAge方法外,由调用该方法的地方处理
 //            throw new RuntimeException("年龄不合法");
+            /*通常我们使用throw抛出一个异常时就要在方法上使用throws声明该异常的抛出,除了RuntimeException
+            剩下的异常都是必须的操作*/
             throw new Exception("年龄不合法");
         }
         this.age = age;
