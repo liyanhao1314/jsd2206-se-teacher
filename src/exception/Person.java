@@ -11,6 +11,20 @@ package exception;
  * 本案例演示的就是第二种情况
  */
 public class Person {
+    private int age;
+
+    public int getAge() {
+        return age;
+    }
+
+    public void setAge(int age) {
+        if(age<0||age>100){
+            //主动实例化一个异常并使用throw关键字将其抛出到setAge方法外,由调用该方法的地方处理
+//            throw new RuntimeException("年龄不合法");
+            throw new Exception("年龄不合法");
+        }
+        this.age = age;
+    }
 }
 
 
